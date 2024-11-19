@@ -1,6 +1,7 @@
 # TODO
 
-- [ ] Style text
-- [ ] Remove button
-- [ ] Gracefully handle reset
-- [ ] Refine animations
+- [ ] Style body text
+- [ ] Fix message text
+- [x] Remove button
+- [x] Gracefully handle reset
+- [x] Refine animations

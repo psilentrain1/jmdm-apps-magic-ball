@@ -1,11 +1,11 @@
-// let testCount: number = 0;
-
+const root: HTMLElement = document.documentElement;
 const background: HTMLElement = document.getElementById("background");
 const ball: HTMLElement = document.getElementById("ball");
 const ballContent: HTMLElement = document.getElementById("ballContent");
 const message: HTMLElement = document.getElementById("message");
 const text: HTMLSpanElement = document.getElementById("text");
 
+const btnReset: HTMLElement = document.getElementById("btn-reset");
 const shakeBtn: HTMLElement = document.getElementById("shake");
 
 const response: string[] = [
@@ -33,8 +33,8 @@ const response: string[] = [
 
 let frontIsCurrent = true;
 
-// shakeBtn.addEventListener("click", btnTest);
 ball.addEventListener("click", mainAction);
+btnReset.addEventListener("click", resetAnimation);
 
 function randomResponse() {
   const choice = Math.floor(Math.random() * 20);
@@ -42,19 +42,25 @@ function randomResponse() {
 }
 
 function beginAnimation() {
+  root.style.setProperty("--rand-rotate", (Math.floor(Math.random() * 21) - 10).toString() + "deg");
   background.style.animation = "begin-background 4s ease forwards";
+  ball.style.animation = "begin-shake 4s linear forwards";
   ballContent.style.animation = "begin-ball 4s ease forwards";
   message.style.animation = "begin-message 4s ease forwards";
   text.style.animation = "begin-text 4s ease forwards";
   frontIsCurrent = false;
+  btnReset.style.visibility = "visible";
+  ball.style.cursor = "default";
 }
 
 function resetAnimation() {
-  background.style.animation = "begin-background 2s ease reverse forwards";
-  ballContent.style.animation = "begin-ball 2s ease reverse forwards";
-  message.style.animation = "begin-message 2s ease reverse forwards";
-  text.style.animation = "begin-text 2s ease reverse forwards";
   frontIsCurrent = true;
+  btnReset.style.visibility = "hidden";
+  background.removeAttribute("style");
+  ballContent.removeAttribute("style");
+  message.removeAttribute("style");
+  text.removeAttribute("style");
+  ball.removeAttribute("style");
 }
 
 function mainAction() {
@@ -62,8 +68,6 @@ function mainAction() {
     text.innerText = randomResponse();
     beginAnimation();
   } else {
-    resetAnimation();
-    // text.innerText = randomResponse();
-    // beginAnimation();
+    return;
   }
 }

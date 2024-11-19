@@ -4,6 +4,8 @@
   --clr-fluid: #000022;
   --clr-die: #000055;
   --clr-text: #aaaaff;
+  --rand-rotate: 10deg;
+  --message-scale: 0.9, 0.9;
 }
 
 @property --bg1 {
@@ -88,6 +90,7 @@ body {
   margin-top: 10%;
   background-color: var(--clr-die);
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  transform: rotate(10deg);
 }
 
 #text {
@@ -97,8 +100,35 @@ body {
   line-height: 1.75rem;
 }
 
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#btn-reset {
+  visibility: hidden;
+  background-color: #ccccff;
+  width: 5rem;
+  height: 2rem;
+  border: 0px solid black;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.5s;
+}
+
+#btn-reset:hover {
+  background-color: #fff;
+}
+
 @keyframes begin-background {
   0% {
+    --bg1: #ccccff;
+    --bg2: #ccccff;
+  }
+  10% {
     --bg1: #ccccff;
     --bg2: #ccccff;
   }
@@ -109,6 +139,29 @@ body {
   100% {
     --bg1: #9999ff;
     --bg2: #550077;
+  }
+}
+@keyframes begin-shake {
+  0% {
+    margin-left: 0px;
+  }
+  2% {
+    margin-left: -5px;
+  }
+  4% {
+    margin-left: 5px;
+  }
+  6% {
+    margin-left: -5px;
+  }
+  8% {
+    margin-left: 5px;
+  }
+  10% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 0px;
   }
 }
 @keyframes begin-ball {
@@ -128,12 +181,15 @@ body {
 @keyframes begin-message {
   0% {
     background-color: var(--clr-fluid);
+    transform: rotate(var(--rand-rotate)) scale(var(--message-scale));
   }
   50% {
     background-color: var(--clr-fluid);
+    transform: rotate(var(--rand-rotate)) scale(var(--message-scale));
   }
   100% {
     background-color: var(--clr-die);
+    transform: rotate(0deg) scale(1, 1);
   }
 }
 @keyframes begin-text {
