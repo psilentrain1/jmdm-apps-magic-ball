@@ -1,0 +1,158 @@
+/* Vars */
+:root {
+  --ball-size: 450px;
+  --clr-fluid: #000022;
+  --clr-die: #000055;
+  --clr-text: #aaaaff;
+}
+
+@property --bg1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ccccff;
+}
+
+@property --bg2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ccccff;
+}
+
+body {
+  --bg1: #ccccff;
+  --bg2: #ccccff;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(var(--bg1), var(--bg2));
+}
+
+.ball {
+  background-color: black;
+  width: var(--ball-size);
+  height: var(--ball-size);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ball__content {
+  position: relative;
+  top: 18%; /* 18% to -75%*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 150%;
+}
+
+.front {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 43.3%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.eight {
+  font-size: 18rem;
+  font-weight: lighter;
+}
+
+.window {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 33.3%;
+  border-radius: 50%;
+  background-color: var(--clr-fluid);
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 65%;
+  margin-top: 10%;
+  background-color: var(--clr-die);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+#text {
+  margin-top: -10%;
+  text-align: center;
+  color: var(--clr-text);
+  line-height: 1.75rem;
+}
+
+@keyframes begin-background {
+  0% {
+    --bg1: #ccccff;
+    --bg2: #ccccff;
+  }
+  50% {
+    --bg1: #9999ff;
+    --bg2: #550077;
+  }
+  100% {
+    --bg1: #9999ff;
+    --bg2: #550077;
+  }
+}
+@keyframes begin-ball {
+  0% {
+    top: 18%;
+  }
+  25% {
+    top: 18%;
+  }
+  50% {
+    top: -75%;
+  }
+  100% {
+    top: -75%;
+  }
+}
+@keyframes begin-message {
+  0% {
+    background-color: var(--clr-fluid);
+  }
+  50% {
+    background-color: var(--clr-fluid);
+  }
+  100% {
+    background-color: var(--clr-die);
+  }
+}
+@keyframes begin-text {
+  0% {
+    color: var(--clr-fluid);
+  }
+  50% {
+    color: var(--clr-fluid);
+  }
+  100% {
+    color: var(--clr-text);
+  }
+}
+
+@keyframes reset-background {
+}
+@keyframes reset-ball {
+}
+@keyframes reset-message {
+}
+@keyframes reset-text {
+}
