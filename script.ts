@@ -6,13 +6,12 @@ const message: HTMLElement = document.getElementById("message");
 const text: HTMLSpanElement = document.getElementById("text");
 
 const btnReset: HTMLElement = document.getElementById("btn-reset");
-const shakeBtn: HTMLElement = document.getElementById("shake");
-
+const footer: HTMLElement = document.getElementById("footer");
 const response: string[] = [
   "IT IS\nCERTAIN",
   "IT IS\nDECIDEDLY\nSO",
   "WITHOUT\nA\nDOUBT",
-  "YES\nDEFINITELY",
+  "YES\nDEFINITELY\n \n",
   "YOU MAY\nRELY ON\nIT",
   "AS I\nSEE IT,\nYES",
   "MOST\nLIKELY",
@@ -28,7 +27,7 @@ const response: string[] = [
   "MY REPLY\nIS NO",
   "MY SOURCES\nSAY NO",
   "OUTLOOK\nNOT SO\nGOOD",
-  "VERY\nDOUBTFUL",
+  "VERY\nDOUBTFUL\n \n",
 ];
 
 let frontIsCurrent = true;
@@ -46,8 +45,9 @@ function beginAnimation() {
   background.style.animation = "begin-background 4s ease forwards";
   ball.style.animation = "begin-shake 4s linear forwards";
   ballContent.style.animation = "begin-ball 4s ease forwards";
-  message.style.animation = "begin-message 4s ease forwards";
-  text.style.animation = "begin-text 4s ease forwards";
+  message.style.animation = "begin-message 4s ease-out forwards";
+  text.style.animation = "begin-text 4s ease-out forwards";
+  footer.style.animation = "begin-footer 4s ease forwards";
   frontIsCurrent = false;
   btnReset.style.visibility = "visible";
   ball.style.cursor = "default";
@@ -60,6 +60,7 @@ function resetAnimation() {
   ballContent.removeAttribute("style");
   message.removeAttribute("style");
   text.removeAttribute("style");
+  footer.removeAttribute("style");
   ball.removeAttribute("style");
 }
 

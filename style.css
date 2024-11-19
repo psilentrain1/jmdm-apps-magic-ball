@@ -20,17 +20,37 @@
   initial-value: #ccccff;
 }
 
+@property --footer {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #000000;
+}
+
 body {
   --bg1: #ccccff;
   --bg2: #ccccff;
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(var(--bg1), var(--bg2));
+}
+
+.title > h1 {
+  text-align: center;
+}
+
+.caption {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto 10px auto;
 }
 
 .ball {
@@ -94,10 +114,11 @@ body {
 }
 
 #text {
-  margin-top: -10%;
+  margin-top: -15%;
   text-align: center;
   color: var(--clr-text);
-  line-height: 1.75rem;
+  line-height: 1.5rem;
+  font-size: 0.85rem;
 }
 
 .button {
@@ -121,6 +142,15 @@ body {
 
 #btn-reset:hover {
   background-color: #fff;
+}
+
+footer {
+  --footer: #000000;
+  position: fixed;
+  bottom: 0;
+  padding: 5px 0 5px 0;
+  text-align: center;
+  color: var(--footer);
 }
 
 @keyframes begin-background {
@@ -203,12 +233,17 @@ body {
     color: var(--clr-text);
   }
 }
-
-@keyframes reset-background {
-}
-@keyframes reset-ball {
-}
-@keyframes reset-message {
-}
-@keyframes reset-text {
+@keyframes begin-footer {
+  0% {
+    --footer: black;
+  }
+  10% {
+    --footer: black;
+  }
+  50% {
+    --footer: #ccccff;
+  }
+  100% {
+    --footer: #ccccff;
+  }
 }
