@@ -17,7 +17,7 @@ pip install tsc
 Clone the repo to your local environment:
 
 ```
-<add code to clone repo here>
+git clone https://github.com/psilentrain1/jmdm-apps-magic-ball.git
 ```
 
 Run TSC in the folder to compile the Typescript:
